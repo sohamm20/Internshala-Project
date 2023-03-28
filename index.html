@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Internshala - Your Destination for Internships and Training</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		header {
+			background-color: #0084ff;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			transition-duration: 0.5s;
+			/* border: 1px solid darkblue; */
+			/* border-radius: 50px; */
+		}
+
+		h1 {
+			font-size: 2.5em;
+			margin-top: 0;
+		}
+
+		.container {
+			margin: auto;
+			max-width: 800px;
+			padding: 20px;
+		}
+
+		section {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-top: 20px;
+		}
+
+		.card {
+			background-color: #fff;
+			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+			flex-basis: calc(33.33% - 10px);
+			margin-bottom: 20px;
+			padding: 20px;
+			transition: box-shadow 0.3s ease;
+		}
+
+		.card:hover {
+			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		}
+
+		.card h2 {
+			font-size: 1.5em;
+			margin-bottom: 10px;
+		}
+
+		.card p {
+			margin-bottom: 0;
+		}
+
+		.card a {
+			background-color: #0084ff;
+			color: #fff;
+			display: inline-block;
+			margin-top: 10px;
+			padding: 10px 20px;
+			text-decoration: none;
+			transition: background-color 0.3s ease;
+		}
+
+		.card a:hover {
+			background-color: #00529b;
+			
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Internshala</h1>
+		<p>Your Destination for Internships and Training</p>
+	</header>
+	<div class="container">
+		<section>
+			<div class="card">
+				<h2>Internships</h2>
+				<p>Looking for an internship? Look no further! Internshala offers a wide range of internship opportunities for students across various fields such as engineering, management, media, and more.</p>
+				<a href="https://internshala.com/internships" target="_blank">View Internships</a>
+			</div>
+			<div class="card">
+				<h2>Training Programs</h2>
+				<p>Looking to enhance your skills? Internshala offers a variety of training programs in areas such as programming, digital marketing, data science, and more. </p>
+				<a href="https://trainings.internshala.com/" target="_blank">View Training Programs</a>
+			</div>
+			<div class="card">
+				<h2>Success Stories</h2>
+				<p>Want to know how other students like you have benefitted from Internshala? Read their success stories and get inspired!</p>
+				<a href="https://internshala.com/internship/success-stories" target="_blank">View Success Stories</a>
+			</div>
+		</section>
+	</div>
+	<script>
+		// Make the header text change color when hovered over
+		const header = document.querySelector('header');
+		header.addEventListener('mouseenter', () => {
+			header.style.color = '#00529b';
+		});
+		header.addEventListener('mouseleave', () => {
+			header.style.color = '#fff';
+		});
+	
+		// Make the cards fade in when they come into view
+		const cards = document.querySelectorAll('.card');
+		const options = {
+			rootMargin: '0px',
+			threshold: 0.2
+		};
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.opacity = '1';
+					entry.target.style.transform = 'translateY(0)';
+					observer.unobserve(entry.target);
+				}
+			});
+		}, options);
+		cards.forEach(card => {
+			card.style.opacity = '0';
+			card.style.transform = 'translateY(20px)';
+			observer.observe(card);
+		});
+	</script>
+</body>
+</html>	
